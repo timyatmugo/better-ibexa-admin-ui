@@ -17,12 +17,22 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class UpdateAlwaysAvailable extends Controller
 {
+    private TranslatorInterface $translator;
+    private ContentService $contentService;
+    private FormFactory $formFactory;
+    private TranslationHelper $translationHelper;
+
     public function __construct(
-        private readonly TranslatorInterface $translator,
-        private readonly ContentService $contentService,
-        private readonly FormFactory $formFactory,
-        private readonly TranslationHelper $translationHelper,
+        TranslatorInterface $translator,
+        ContentService $contentService,
+        FormFactory $formFactory,
+        TranslationHelper $translationHelper
     ) {
+
+        $this->translator = $translator;
+        $this->contentService = $contentService;
+        $this->formFactory = $formFactory;
+        $this->translationHelper = $translationHelper;
     }
 
     public function __invoke(int $id, Request $request): Response

@@ -15,15 +15,22 @@ use Twig\Environment;
 
 final class TranslationsTab extends AbstractEventDispatchingTab implements OrderedTabInterface
 {
+    private IbexaTranslationsTab $inner;
+    private PermissionResolver $permissionResolver;
+    private FormFactory $localFormFactory;
+
     public function __construct(
-        private readonly IbexaTranslationsTab $inner,
-        private readonly PermissionResolver $permissionResolver,
-        private readonly FormFactory $localFormFactory,
+        IbexaTranslationsTab $inner,
+        PermissionResolver $permissionResolver,
+        FormFactory $localFormFactory,
         Environment $twig,
         TranslatorInterface $translator,
-        EventDispatcherInterface $eventDispatcher,
+        EventDispatcherInterface $eventDispatcher
     ) {
         parent::__construct($twig, $translator, $eventDispatcher);
+        $this->inner = $inner;
+        $this->permissionResolver = $permissionResolver;
+        $this->localFormFactory = $localFormFactory;
     }
 
     public function getIdentifier(): string

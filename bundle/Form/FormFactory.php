@@ -12,9 +12,11 @@ use Symfony\Component\Form\FormInterface;
 
 final class FormFactory
 {
+    private FormFactoryInterface $formFactory;
     public function __construct(
-        private readonly FormFactoryInterface $formFactory,
+        FormFactoryInterface $formFactory
     ) {
+        $this->formFactory = $formFactory;
     }
 
     public function createContentAlwaysAvailableUpdateForm(?bool $alwaysAvailable = null): FormInterface
