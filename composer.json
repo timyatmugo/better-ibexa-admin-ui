@@ -10,12 +10,22 @@
             "homepage": "https://netgen.io"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/timyatmugo/ibexa-site-api"
+        }
+    ],
     "require": {
         "ibexa/admin-ui": "^4.4"
     },
     "require-dev": {
-        "netgen/ibexa-site-api": "^5.4",
-        "ibexa/graphql": "^4.5"
+        "netgen/ibexa-site-api": "dev-php7",
+        "ibexa/graphql": "^4.5",
+        "phpstan/phpstan": "^1.10"
+    },
+    "scripts": {
+        "phpstan": "vendor/bin/phpstan"
     },
     "autoload": {
         "psr-4": {
